@@ -22,13 +22,17 @@ Just type:  `kubectl -f tutorial.yaml`
 
 <br>
 
-## How to Connect
+
+## How to connect?
+
+
 | Pod         | DNS                               |
 | ----------- | -----------                       |
 | VSCode      | localhost:8443 (from your browser)|
 | RHEL        | rhel-service (from inside VSCode)      |
 | CentOS      | centos-service (from inside VSCode)    |
 | Debian      | debian-service (from inside VSCode)    |
+
 
 
 
