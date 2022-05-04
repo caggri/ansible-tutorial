@@ -1,0 +1,133 @@
+apiVersion: v1 #VSCode Pod
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: vscode
+  name: vscode
+spec:
+  containers:
+  - image: caggri/ansible-vscode:arm64
+    name: vscode
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+
+
+---
+apiVersion: v1 #VSCode Service
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    run: vscode
+  name: vscode-service
+spec:
+  ports:
+  - port: 8443
+    protocol: TCP
+    targetPort: 8443
+  selector:
+    run: vscode
+  type: LoadBalancer
+
+
+---
+apiVersion: v1 #debian Pod
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: debian
+  name: debian
+spec:
+  containers:
+  - image: caggri/debianbullseye-custom:arm64
+    name: debian
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+ 
+
+---
+apiVersion: v1 #debian Service
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    run: debian
+  name: debian-service
+spec:
+  ports:
+  - port: 22
+    protocol: TCP
+    targetPort: 22
+  selector:
+    run: debian
+  type: ClusterIP
+
+---
+apiVersion: v1 #CentOS Pod
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: centos
+  name: centos
+spec:
+  containers:
+  - image: caggri/centos7-custom:arm64
+    name: centos
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+
+---
+apiVersion: v1 #CentOS Service
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    run: centos
+  name: centos-service
+spec:
+  ports:
+  - port: 22
+    protocol: TCP
+    targetPort: 22
+  selector:
+    run: centos
+  type: ClusterIP
+
+---
+apiVersion: v1 #RHEL Pod
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: rhel
+  name: rhel
+spec:
+  containers:
+  - image: caggri/rhel8-custom:arm64
+    name: rhel
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+
+---
+apiVersion: v1 #RHEl Service
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    run: rhel
+  name: rhel-service
+spec:
+  ports:
+  - port: 22
+    protocol: TCP
+    targetPort: 22
+  selector:
+    run: rhel
+  type: ClusterIP
