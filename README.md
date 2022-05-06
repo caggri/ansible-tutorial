@@ -18,7 +18,7 @@ Credentials are the same for every image; `root:Docker!`
 
 ## How to start?
 
-Just type:  `kubectl -f tutorial.yaml`
+Just type:  `kubectl apply -f tutorial.yaml`
 
 <br>
 
