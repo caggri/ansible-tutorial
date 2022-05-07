@@ -1,6 +1,8 @@
 FROM redhat/ubi8
 LABEL maintainer="Cagri Bayram | caggri@outlook.com"
-RUN dnf install openssh-clients openssh-server openssh -y
+RUN yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
+RUN dnf install iproute openssh-clients openssh-server openssh sshpass sudo -y
+RUN yum remove epel-release -y
 RUN echo 'root:Docker!' | chpasswd
 RUN mkdir -p /var/run/sshd
 RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key

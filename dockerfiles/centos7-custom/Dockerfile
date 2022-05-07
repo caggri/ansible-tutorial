@@ -1,6 +1,6 @@
 FROM centos:7
 LABEL maintainer="Cagri Bayram | caggri@outlook.com"
-RUN yum install openssh-clients openssh-server openssh -y
+RUN yum install iproute openssh-clients openssh-server openssh sshpass sudo -y
 RUN echo 'root:Docker!' | chpasswd
 RUN mkdir -p /var/run/sshd
 RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
